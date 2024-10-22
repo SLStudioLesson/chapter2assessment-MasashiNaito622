@@ -57,8 +57,8 @@ public class RecipeFileHandler {
      // 
     public void addRecipe(String recipeName, String ingredients) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
-            writer.write(recipeName + "," + ingredients); // レシピ名と材料をカンマ区切りで書き込む
-            writer.newLine(); // 新しい行を追加
+            writer.write(recipeName + "," + ingredients); // レシピ名と材料をカンマで区切る
+            writer.newLine(); // 行を追加
         } catch (IOException e) {
             System.out.println("Error writing to file: " + e.getMessage());
         }

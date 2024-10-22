@@ -41,6 +41,7 @@ public class RecipeUI {
                         break;
                     case "2":
                         // 設問2: 新規登録機能
+                        addNewRecipe();//2を選択で新規登録の機能に遷移
                         break;
                     case "3":
                         // 設問3: 検索機能
@@ -67,7 +68,7 @@ public class RecipeUI {
         ArrayList<String> recipes = fileHandler.readRecipes();
 
         //レシピデータが空の場合はNo recipes available. というメッセージを表示
-        if(recipes.size()==0){
+        if(recipes.isEmpty()){
             System.out.println("No recipes available.");
             return;
         }
@@ -99,6 +100,19 @@ public class RecipeUI {
      * @throws java.io.IOException 入出力が受け付けられない
      */
     private void addNewRecipe() throws IOException {
+        //レシピ名の入力をする
+        System.out.print("Enter recipe name: ");
+        String recipeName = reader.readLine();
+
+        //材料を入力する
+        System.out.print("Enter main ingredients (comma separated):");
+        String ingredients = reader.readLine();
+        //RecipFileHandlerを使用してレシピと材料を追加する
+        fileHandler.addRecipe(recipeName, ingredients);
+
+        //入力を成功した場合の出力
+        System.out.println("Recipe added successfully");
+
 
     }
 
